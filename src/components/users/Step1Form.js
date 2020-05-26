@@ -67,7 +67,7 @@ class Step1Form extends Component {
                           value={values.email}
                           className="form-control"
                           placeholder="Enter Email"
-                          autocomplete="off"
+                          autoComplete="off"
                           style={{paddingLeft:"50px"}}
                         />
 

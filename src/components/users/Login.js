@@ -77,7 +77,7 @@ class Login extends Component {
                           value={values.password}
                           className="form-control"
                           placeholder="Enter Your Password"
-                          autocomplete="off"
+                          autoComplete="off"
                           style={{paddingLeft:"50px"}}
                         />
 
