@@ -24,3 +24,27 @@ export function toDoList(list) {
     }
   }
 }
+
+export function toDOListAdd(data){
+
+  return {
+    type: 'TODO_LIST_ADD',
+    payload: data
+  }
+}
+
+export function toDoListUpdate(data){
+  console.log("ActionUpdate", data);
+  return {
+    type: 'TODO_LIST_UPDATE',
+    payload: data
+  }
+}
+
+export function toDoListDelete(data){
+  console.log("Action Delete", data);
+  return {
+    type: 'TODO_LIST_DELETE',
+    payload: data
+  }
+}

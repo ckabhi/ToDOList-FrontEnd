@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 
 // Components
 import Home from './../containers/Home';
@@ -44,9 +44,11 @@ class App extends Component {
             :
             <Redirect to='/login' />
           }
-          <Route exact path='/' component={Login} />
-          <Route path='/login' component={Login} />
-          <Route path='/home' component={Home} />
+          <Switch>
+            <Route exact path='/' component={Login} />
+            <Route path='/login' component={Login} />
+            <Route path='/home' component={Home} />
+          </Switch>
 
         </div>
       </BrowserRouter>

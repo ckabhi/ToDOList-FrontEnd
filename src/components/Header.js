@@ -20,6 +20,7 @@ class Header extends Component {
   logOut() {
     this.props.dispatch(userLogout());
     localStorage.removeItem('socialReduxState');
+    window.location.replace("http://localhost:3000/");
   }
   render() {
 

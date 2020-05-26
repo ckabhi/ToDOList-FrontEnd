@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Formik, Form, Field } from 'formik';
-import { toDoList } from '../../actions/loginActions';
+import { toDoList, toDoListUpdate, toDoListDelete } from '../../actions/loginActions';
 
 class ShowToDo extends Component {
    constructor() {
@@ -28,10 +28,9 @@ class ShowToDo extends Component {
       })
     };
     fetch('http://127.0.0.1:8081/user/delete', requestOptions)
-    .then(res => res.json())
       .then(data => {
       console.log("Edit Data", data);
-      this.props.dispatch(toDoList(data));
+      this.props.dispatch(toDoListDelete(listId));
     });
   }
   submitUser(values) {
@@ -59,10 +58,17 @@ class ShowToDo extends Component {
       })
     };
     fetch('http://127.0.0.1:8081/user/edit', requestOptions)
-    .then(res => res.json())
       .then(data => {
       console.log("Edit Data", data);
-      this.props.dispatch(toDoList(data));
+
+      const listData= JSON.stringify({
+        userId,
+        id,
+        title,
+        date,
+        status
+      })
+      this.props.dispatch(toDoListUpdate(listData));
       this.setState({edit: true});
     });
   }

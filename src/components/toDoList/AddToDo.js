@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee, faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
 import { faStarHalf, faStar as faBlankStart } from '@fortawesome/free-regular-svg-icons';
-import { toDoList } from '../../actions/loginActions';
+import { toDoList, toDOListAdd } from '../../actions/loginActions';
 
 class AddToDo extends Component {
    constructor() {
@@ -37,7 +37,8 @@ class AddToDo extends Component {
     .then(res => res.json())
       .then(data => {
       console.log("Edit Data", data);
-      this.props.dispatch(toDoList(data));
+
+      this.props.dispatch(toDOListAdd(data));
     });
   }
   render() {
@@ -123,7 +124,6 @@ class AddToDo extends Component {
                            style={{width: "100%", border: "1px solid #9E9E9E",}}
                            onChange={e => {
                              handleChange(e);
-                             this.submitUser(e.target.value);
                            }}
                            
                          >
