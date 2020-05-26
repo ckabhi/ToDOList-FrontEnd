@@ -6,11 +6,20 @@ class ShowToDo extends Component {
    constructor() {
       super();
       this.state = {
-        edit: true
+        edit: true,
+        token: ""
       }
       this.edit = this.edit.bind(this);
       this.delete= this.delete.bind(this);
   }
+
+  componentDidMount(){
+    const { loginActivity }= this.props;
+    this.setState({
+      token: loginActivity.activeUser.userObj.token
+    });
+  }
+
   edit() {
     this.setState({edit: false});
   }
@@ -21,6 +30,7 @@ class ShowToDo extends Component {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
+        'Authorization': 'bearer '+ this.state.token
       },
       body: JSON.stringify({
         userId,
@@ -48,6 +58,7 @@ class ShowToDo extends Component {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
+        'Authorization': 'bearer '+ this.state.token
       },
       body: JSON.stringify({
         userId,

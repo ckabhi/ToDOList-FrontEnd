@@ -9,8 +9,18 @@ import { toDoList, toDOListAdd } from '../../actions/loginActions';
 class AddToDo extends Component {
    constructor() {
       super();
+      this.state ={
+        token: ""
+      }
   }
   
+  componentDidMount(){
+    const {loginActivity }= this.props;
+    this.setState({
+      token: loginActivity.activeUser.userObj.token
+    });
+  }
+
   submitUser(values) {
     console.log("Login Values", values);
     const {
@@ -25,6 +35,7 @@ class AddToDo extends Component {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
+        'Authorization': 'bearer '+ this.state.token
       },
       body: JSON.stringify({
         userId,

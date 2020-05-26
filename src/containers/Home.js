@@ -43,7 +43,8 @@ class Home extends Component {
       userObj
     } = activeUser;
     const {
-       id
+       id,
+       token
     } = userObj;
     console.log("Email", id);
     
@@ -52,6 +53,7 @@ class Home extends Component {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
+        'Authorization': 'bearer '+token
       },
       body: JSON.stringify({
         userid: id
@@ -88,6 +90,7 @@ class Home extends Component {
             loginActivity = {loginActivity}
             match = {match}
             dispatch = {dispatch}
+            key={data.id}
          />
       );
    });
